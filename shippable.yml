@@ -6,7 +6,7 @@ jobs:
       
   - name: DCL-deploy
     type: deploy
-    method: scale
+    method: upgrade
     steps:
       - IN: manifest-job
       - IN: DCL-cluster
