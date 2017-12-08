@@ -32,7 +32,7 @@ resources:
   - name: scaler
     type: replicas
     version:
-      count: 0
+      count: 1
 
   - name: nginx-image
     type: image
