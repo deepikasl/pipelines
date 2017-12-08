@@ -6,10 +6,10 @@ jobs:
       
   - name: DCL-deploy
     type: deploy
-    method: replace
+    method: scale
     steps:
       - IN: manifest-job
-      - IN: DCL-cluster       
+      - IN: DCL-cluster      
 
 resources:
   - name: nginx-image
