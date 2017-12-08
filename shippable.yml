@@ -27,6 +27,14 @@ jobs:
       - IN: manifest-job
       - IN: ECS-cluster
       - IN: scaler
+      
+  - name: GKE-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: GKE-cluster
+      - IN: scaler      
 
 resources:
   - name: scaler
@@ -58,3 +66,10 @@ resources:
     pointer:
       sourceName: "ecs-cluster"
       region: "us-west-2"    
+
+  - name: GKE-cluster
+    type: cluster
+    integration: "gke-subint"
+    pointer:
+      sourceName: "gke-cluster"
+      region: "us-central1-a"    
