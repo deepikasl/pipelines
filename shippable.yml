@@ -9,9 +9,15 @@ jobs:
     method: scale
     steps:
       - IN: manifest-job
-      - IN: DCL-cluster      
+      - IN: DCL-cluster
+      - IN: scaler
 
 resources:
+  - name: scaler
+    type: replicas
+    version:
+      count: 0
+
   - name: nginx-image
     type: image
     integration: "docker-subint"
@@ -24,4 +30,4 @@ resources:
     type: cluster
     integration: "dcl-subint"
     pointer:
-      sourceName: "dcl-cluster"      
+      sourceName: "dcl-cluster"
