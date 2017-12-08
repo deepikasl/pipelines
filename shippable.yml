@@ -18,7 +18,15 @@ jobs:
     steps:
       - IN: manifest-job
       - IN: DDC-cluster
-      - IN: scaler      
+      - IN: scaler  
+      
+  - name: ECS-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: ECS-cluster
+      - IN: scaler
 
 resources:
   - name: scaler
@@ -42,4 +50,11 @@ resources:
       
   - name: DDC-cluster
     type: cluster
-    integration: "ddc-subint"      
+    integration: "ddc-subint"
+    
+  - name: ECS-cluster
+    type: cluster
+    integration: "aws-subint"
+    pointer:
+      sourceName: "ecs-cluster"
+      region: "us-west-2"    
