@@ -1,17 +1,17 @@
 jobs:
-  - name: manifest_job
+  - name: manifest-job
     type: manifest
     steps:
-      - IN: nginx_image
+      - IN: nginx-image
       
   - name: DCL-deploy
     type: deploy
     steps:
-      - IN: manifest_job
+      - IN: manifest-job
       - IN: DCL-cluster       
 
 resources:
-  - name: nginx_image
+  - name: nginx-image
     type: image
     integration: "docker-subint"
     pointer:
