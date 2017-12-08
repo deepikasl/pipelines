@@ -1,104 +1,17 @@
 jobs:
-  - name: runSh_0
-    type: runSh
+  - name: manifest_job
+    type: manifest
     steps:
-      - OUT: nginx_1 
-      - TASK:
-        - script: secs=60; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-        - script: shipctl post_resource_state nginx_1 versionName runSh_0_$BUILD_NUMBER
-
-  - name: runSh_1
-    type: runSh
+      - IN: nginx_image
+      
+  - name: DCL-deploy
+    type: deploy
     steps:
-      - OUT: nginx_1 
-      - TASK:
-        - script: secs=60; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-        - script: shipctl post_resource_state nginx_1 versionName runSh_1_$BUILD_NUMBER
-
-  - name: runSh_2
-    type: runSh
-    steps:
-      - TASK:
-        - script: secs=60; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-        
-  - name: runSh_3
-    type: runSh
-    steps:
-      - TASK:
-        - script: secs=60; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done     
-
-  - name: runSh_5
-    type: runSh
-    dependencyMode: strict
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI
-      - TASK:
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-
-  - name: sample_java_runCI
-    type: runCI
-    dependencyMode: strict
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2      
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI
-
-  - name: runSh_6
-    type: runSh
-    dependencyMode: immediate
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2      
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI  
-      - TASK:
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-
-  - name: sample_c_runCI
-    type: runCI
-    dependencyMode: immediate
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2      
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI
-
-  - name: runSh_7
-    type: runSh
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2      
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI
-      - TASK:
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done        
-
-  - name: coverage_sample_runCI
-    type: runCI
-    steps:
-      - IN: nginx_1
-      - IN: nginx_2      
-      - IN: runSh_2
-      - IN: runSh_3
-        switch: off
-      - IN: sample_node_runCI
+      - IN: manifest_job
+      - IN: DCL-cluster       
 
 resources:
-  - name: nginx_1
+  - name: nginx_image
     type: image
     integration: "docker-subint"
     pointer:
@@ -106,10 +19,8 @@ resources:
     seed:
       versionName: prod.10
       
-  - name: nginx_2
-    type: image
-    integration: "docker-subint"
+  - name: DCL-cluster
+    type: cluster
+    integration: "dcl-subint"
     pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
+      sourceName: "dcl-cluster"      
