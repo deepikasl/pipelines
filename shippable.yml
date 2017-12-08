@@ -11,6 +11,14 @@ jobs:
       - IN: manifest-job
       - IN: DCL-cluster
       - IN: scaler
+      
+  - name: DDC-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: DDC-cluster
+      - IN: scaler      
 
 resources:
   - name: scaler
@@ -31,3 +39,7 @@ resources:
     integration: "dcl-subint"
     pointer:
       sourceName: "dcl-cluster"
+      
+  - name: DDC-cluster
+    type: cluster
+    integration: "ddc-subint"      
