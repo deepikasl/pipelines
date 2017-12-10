@@ -42,7 +42,8 @@ jobs:
     steps:
       - IN: manifest-job
       - IN: GKE-cluster
-      - IN: scaler      
+      - IN: scaler
+      - IN: kube-access
 
 resources:
   - name: scaler
