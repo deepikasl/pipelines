@@ -28,6 +28,14 @@ jobs:
       - IN: ECS-cluster
       - IN: scaler
       
+  - name: KUBE-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: KUBE-cluster
+      - IN: scaler
+      
   - name: GKE-deploy
     type: deploy
     #method: upgrade
@@ -72,4 +80,17 @@ resources:
     integration: "gke-subint"
     pointer:
       sourceName: "gke-cluster"
-      region: "us-central1-a"    
+      region: "us-central1-a"   
+      
+  - name: kube-bastian-host-access
+    type: integration
+    integration: "kube-bastian-host-access"
+
+  - name: KUBE-cluster
+    type: cluster
+    integration: "kube-subint"
+    pointer:
+      bastionHost:
+        address: 54.200.19.227
+        user: ubuntu
+        keyIntegration: "kube-bastian-host-access"    
