@@ -82,7 +82,7 @@ resources:
       sourceName: "gke-cluster"
       region: "us-central1-a"   
       
-  - name: kube-bastian-host-access
+  - name: kube-access
     type: integration
     integration: "kube-bastian-host-access"
 
@@ -93,4 +93,4 @@ resources:
       bastionHost:
         address: 54.200.19.227
         user: ubuntu
-        keyIntegration: "kube-bastian-host-access"    
+        keyIntegration: "kube-access"    
