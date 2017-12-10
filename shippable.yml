@@ -28,14 +28,6 @@ jobs:
       - IN: ECS-cluster
       - IN: scaler
       
-  - name: KUBE-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: KUBE-cluster
-      - IN: scaler
-      
   - name: GKE-deploy
     type: deploy
     #method: upgrade
@@ -43,7 +35,15 @@ jobs:
       - IN: manifest-job
       - IN: GKE-cluster
       - IN: scaler
-      - IN: kube-access
+
+  - name: KUBE-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: KUBE-cluster
+      - IN: scaler
+      - IN: kube-access  
 
 resources:
   - name: scaler
