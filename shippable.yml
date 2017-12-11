@@ -133,7 +133,7 @@ resources:
     integration: "azure-subint"
     pointer:
       bastionHost:
-        address: 54.149.251.96
+        address: 54.202.160.104
         user: ubuntu
         keyIntegration: "kube-access"
 
@@ -144,6 +144,6 @@ resources:
       sourceName: "gke-cluster"
       region: "us-central1-a" 
       bastionHost:
-        address: 54.149.251.96
+        address: 54.202.160.104
         user: ubuntu
         keyIntegration: "kube-access"
