@@ -45,6 +45,14 @@ jobs:
       - IN: scaler
       - IN: kube-access  
 
+  - name: TRIPUB-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: TRIPUB-cluster
+      - IN: scaler
+
 resources:
   - name: scaler
     type: replicas
@@ -94,4 +102,10 @@ resources:
       bastionHost:
         address: 54.200.19.227
         user: ubuntu
-        keyIntegration: "kube-access"    
+        keyIntegration: "kube-access"
+        
+  - name: TRIPUB-cluster
+    type: cluster
+    integration: "joyent-subint"
+    pointer:
+      region: "us-east-1"        
