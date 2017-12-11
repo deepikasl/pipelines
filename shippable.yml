@@ -62,6 +62,15 @@ jobs:
       - IN: scaler
       - IN: kube-access  
 
+  - name: GCLOUDKEY-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: GCLOUDKEY-cluster
+      - IN: scaler
+      - IN: kube-access 
+
 resources:
   - name: scaler
     type: replicas
@@ -122,6 +131,15 @@ resources:
   - name: AZURE-cluster
     type: cluster
     integration: "azure-subint"
+    pointer:
+      bastionHost:
+        address: 54.149.251.96
+        user: ubuntu
+        keyIntegration: "kube-access"
+
+  - name: GCLOUDKEY-cluster
+    type: cluster
+    integration: "gke-subint"
     pointer:
       bastionHost:
         address: 54.149.251.96
