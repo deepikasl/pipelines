@@ -121,7 +121,7 @@ resources:
 
   - name: AZURE-cluster
     type: cluster
-    integration: "kube-subint"
+    integration: "azure-subint"
     pointer:
       bastionHost:
         address: 54.149.251.96
