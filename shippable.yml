@@ -53,6 +53,15 @@ jobs:
       - IN: TRIPUB-cluster
       - IN: scaler
 
+  - name: AZURE-deploy
+    type: deploy
+    #method: upgrade
+    steps:
+      - IN: manifest-job
+      - IN: AZURE-cluster
+      - IN: scaler
+      - IN: kube-access  
+
 resources:
   - name: scaler
     type: replicas
@@ -109,3 +118,12 @@ resources:
     integration: "joyent-subint"
     pointer:
       region: "us-east-1"        
+
+  - name: AZURE-cluster
+    type: cluster
+    integration: "kube-subint"
+    pointer:
+      bastionHost:
+        address: 54.149.251.96
+        user: ubuntu
+        keyIntegration: "kube-access"
