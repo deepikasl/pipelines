@@ -132,6 +132,8 @@ resources:
     type: cluster
     integration: "azure-subint"
     pointer:
+      sourceName: ankul
+      groupName: ankul
       bastionHost:
         address: 54.202.160.104
         user: ubuntu
