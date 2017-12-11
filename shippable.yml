@@ -118,7 +118,7 @@ resources:
     integration: "kube-subint"
     pointer:
       bastionHost:
-        address: 54.245.186.203
+        address: 54.149.13.153
         user: ubuntu
         keyIntegration: "kube-access"
         
