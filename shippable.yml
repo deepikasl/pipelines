@@ -141,6 +141,8 @@ resources:
     type: cluster
     integration: "gke-subint"
     pointer:
+      sourceName: "gke-cluster"
+      region: "us-central1-a" 
       bastionHost:
         address: 54.149.251.96
         user: ubuntu
