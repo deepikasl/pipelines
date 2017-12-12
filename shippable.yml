@@ -148,6 +148,6 @@ resources:
       #namespace: "random_name_space"
       groupName: "test_group"
       bastionHost:
-        address: 54.149.141.34
+        address: 34.211.50.143
         user: ubuntu
         keyIntegration: "kube-access"
