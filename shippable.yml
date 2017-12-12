@@ -145,7 +145,8 @@ resources:
     pointer:
       sourceName: "gke-cluster-1"
       region: "us-central1-a"
-      groupName: "test_group"
+      namespace: "random_name_space"
+      #groupName: "test_group"
       bastionHost:
         address: 54.149.141.34
         user: ubuntu
