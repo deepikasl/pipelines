@@ -150,4 +150,4 @@ resources:
       bastionHost:
         address: 34.211.50.143
         user: ubuntu
-        keyIntegration: "kube-access"
+        keyIntegration: "kube-access-2"
