@@ -67,7 +67,7 @@ jobs:
     #method: upgrade
     steps:
       - IN: manifest-job
-      - IN: GCLOUDKEY-cluster
+      - IN: GCLOUDKEY-cluster-2
       - IN: scaler
       - IN: kube-access 
 
@@ -139,7 +139,7 @@ resources:
         user: ubuntu
         keyIntegration: "kube-access"
 
-  - name: GCLOUDKEY-cluster
+  - name: GCLOUDKEY-cluster-2
     type: cluster
     integration: "gke-subint"
     pointer:
