@@ -146,6 +146,6 @@ resources:
       sourceName: "gke-cluster"
       region: "us-central1-a" 
       bastionHost:
-        address: 54.202.160.104
+        address: 54.245.196.110
         user: ubuntu
         keyIntegration: "kube-access"
