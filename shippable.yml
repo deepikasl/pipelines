@@ -143,7 +143,7 @@ resources:
     type: cluster
     integration: "gke-subint"
     pointer:
-      sourceName: "gke-cluster-1"
+      sourceName: "gke-cluster-2"
       region: "us-central1-a"
       #namespace: "random_name_space"
       groupName: "test_group"
