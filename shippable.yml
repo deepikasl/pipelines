@@ -144,8 +144,8 @@ resources:
     integration: "gke-subint"
     pointer:
       sourceName: "gke-cluster-1"
-      region: "us-central1-a-k"
-      groupName: "test_group-k"
+      region: "us-central1-a"
+      groupName: "test_group"
       bastionHost:
         address: 54.149.141.34
         user: ubuntu
