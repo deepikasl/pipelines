@@ -16,13 +16,13 @@ jobs:
 resources:
   - name: gcloud-cli
     type: cliConfig
-    integration: "gke-subint"
+    integration: "gke-subint-2"
     pointer:
       region: "us-central1-a"
       clusterName: "gke-cluster-2"
       
   - name: aws-cli
     type: cliConfig
-    integration: "aws-subint"
+    integration: "aws-subint-2"
     pointer:
       region: "us-west-2"
