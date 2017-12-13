@@ -11,5 +11,5 @@ resources:
     type: cliConfig
     integration: "gcp-subint"
     pointer:
-      region: "dcl-cluster"
-      clusterName: "gke-cluster"
+      region: "us-central1-a"
+      clusterName: "gke-cluster-2"
