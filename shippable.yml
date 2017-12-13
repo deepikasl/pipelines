@@ -147,7 +147,7 @@ resources:
       region: "us-central1-a"
       #namespace: "random_name_space"
       groupName: "test_group"
-      bastionHost:
-        address: 34.211.50.143
-        user: ubuntu
-        keyIntegration: "kube-access-2"
+      #bastionHost:
+        #address: 34.211.50.143
+        #user: ubuntu
+        #keyIntegration: "kube-access-2"
