@@ -5,6 +5,13 @@ jobs:
       - IN: gcloud-cli
       - TASK:
         - script: gcloud container clusters list
+        
+  - name: aws
+    type: runSh
+    steps:
+      - IN: aws-cli
+      - TASK:
+        - script: aws ec2 describe-instances        
 
 resources:
   - name: gcloud-cli
@@ -13,3 +20,9 @@ resources:
     pointer:
       region: "us-central1-a"
       clusterName: "gke-cluster-2"
+      
+  - name: aws-cli
+    type: cliConfig
+    integration: "aws-subint"
+    pointer:
+      region: "us-west-2"
