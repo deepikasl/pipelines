@@ -9,7 +9,7 @@ jobs:
 resources:
   - name: gcloud-cli
     type: cliConfig
-    integration: "gcp-subint"
+    integration: "gke-subint"
     pointer:
       region: "us-central1-a"
       clusterName: "gke-cluster-2"
