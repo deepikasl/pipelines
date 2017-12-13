@@ -3,7 +3,7 @@ jobs:
     type: runSh
     steps:
       - IN: gcloud-cli
-      - TASK: DCL-cluster
+      - TASK:
         - script: gcloud container clusters list
 
 resources:
