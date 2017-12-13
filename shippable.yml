@@ -23,6 +23,6 @@ resources:
       
   - name: aws-cli
     type: cliConfig
-    integration: "aws-subint-2"
+    integration: "aws-subint-3"
     pointer:
       region: "us-west-2"
