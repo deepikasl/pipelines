@@ -26,3 +26,8 @@ resources:
     integration: "aws-subint-3"
     pointer:
       region: "us-west-2"
+
+  - name: time-resource
+    type: time
+    seed:
+       interval: "*/10 * * * *"
