@@ -27,7 +27,7 @@ resources:
     pointer:
       region: "us-west-2"
 
-  - name: time-resource
-    type: time
-    seed:
-       interval: "*/15 * * * *"
+#  - name: time-resource
+#    type: time
+#    seed:
+#       interval: "*/15 * * * *"
