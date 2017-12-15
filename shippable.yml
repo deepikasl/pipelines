@@ -31,5 +31,5 @@ resources:
        
   - name: time-4
     type: time
-    seed:
-       interval: "*/4 * * * *"
+    #seed:
+       #interval: "*/4 * * * *"#
