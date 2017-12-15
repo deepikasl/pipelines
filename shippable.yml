@@ -2,32 +2,33 @@ jobs:
   - name: gcloud
     type: runSh
     steps:
-      - IN: gcloud-cli
+      - IN: time-resource
       - TASK:
-        - script: gcloud container clusters list
+        #- script: gcloud container clusters list
+        - script: echo "gcloud"
         
   - name: aws
     type: runSh
     steps:
-      - IN: aws-cli
+      - IN: time-resource
       - TASK:
-        - script: aws ec2 describe-instances        
-
+        #- script: aws ec2 describe-instances        
+        - script: echo "aws"
 resources:
-  - name: gcloud-cli
-    type: cliConfig
-    integration: "gke-subint-2"
-    pointer:
-      region: "us-central1-a"
-      clusterName: "gke-cluster-2"
+#  - name: gcloud-cli
+#    type: cliConfig
+#    integration: "gke-subint-2"
+#    pointer:
+#      region: "us-central1-a"
+#      clusterName: "gke-cluster-2"
       
-  - name: aws-cli
-    type: cliConfig
-    integration: "aws-subint-3"
-    pointer:
-      region: "us-west-2"
+#  - name: aws-cli
+#    type: cliConfig
+#    integration: "aws-subint-3"
+#    pointer:
+#      region: "us-west-2"
 
-#  - name: time-resource
-#    type: time
-#    seed:
-#       interval: "*/15 * * * *"
+  - name: time-resource
+    type: time
+    seed:
+       interval: "*/15 * * * *"
