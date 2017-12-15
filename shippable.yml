@@ -3,8 +3,8 @@ jobs:
     type: runSh
     steps:
       #- IN: time-1
-      - TASK:
-        - script: echo "gcloud"
+      #- TASK:
+        #- script: echo "gcloud"
         
   - name: aws
     type: runSh
