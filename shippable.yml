@@ -17,19 +17,19 @@ resources:
   - name: time-1
     type: time
     seed:
-       interval: "*/1 * * * *"
+       interval: "*/10 * * * *"
        
   - name: time-2
     type: time
     seed:
-       interval: "*/2 * * * *"
+       interval: "*/20 * * * *"
        
   - name: time-3
     type: time
     seed:
-       interval: "*/3 * * * *"       
+       interval: "*/30 * * * *"       
        
   - name: time-4
     type: time
     #seed:
-       #interval: "*/4 * * * *"#
+       #interval: "*/40 * * * *"#
