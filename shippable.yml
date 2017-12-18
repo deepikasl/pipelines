@@ -2,7 +2,7 @@ resources:
   - name: timer
     type: time
     seed:
-       interval: "*/2 * * * *"
+       interval: "*/3 * * * *"
        
 jobs:
   - name: sample_java_runCI
