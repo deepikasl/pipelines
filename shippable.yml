@@ -4,6 +4,11 @@ resources:
     seed:
        interval: "*/4 * * * *"
        
+  - name: timer-2
+    type: time
+    seed:
+       interval: "*/4 * * * *"       
+       
 jobs:
   - name: sample_java_runCI
     type: runCI
