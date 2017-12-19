@@ -24,3 +24,8 @@ jobs:
     type: runCI
     steps:
       - IN: timer
+      
+  - name: sample_python_runCI
+    type: runCI
+    steps:
+      - IN: timer
