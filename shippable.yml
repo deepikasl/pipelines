@@ -1,3 +1,5 @@
+language: nodejs
+
 jobs:
   - name: runSh_0
     type: runSh
