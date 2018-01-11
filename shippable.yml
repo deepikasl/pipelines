@@ -41,9 +41,9 @@ jobs:
       - IN: state-resource-2
       - IN: state-job-in-2
       - TASK:
-        - script: shipctl get_resource_version_key state-resource "MESSAGE"
+        - script: shipctl get_resource_version_key state-resource-2 "MESSAGE"
         - script: secs=10; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-        - script: shipctl post_resource_state state-resource "MESSAGE" "build_"$BUILD_NUMBER
+        - script: shipctl post_resource_state state-resource-2 "MESSAGE" "build_"$BUILD_NUMBER
       - OUT: state-resource-2
 
   - name: state-job-out-2
