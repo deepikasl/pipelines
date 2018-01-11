@@ -49,7 +49,7 @@ jobs:
   - name: state-job-out-2
     type: runSh
     steps:
-      - IN: job-with-state
+      - IN: job-with-state-2
       - TASK:
         - script: secs=10; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
