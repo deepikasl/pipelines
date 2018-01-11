@@ -3,15 +3,31 @@ build:
     - echo "true"
 
 jobs:
+  - name: state-job-in
+    type: runSh
+    steps:
+      - IN: state-resource
+      - TASK:
+        - script: secs=10; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+
   - name: job-with-state
     type: runSh
     steps:
       - IN: state-resource
+      - IN: state-job-in
       - TASK:
         - script: shipctl get_resource_version_key state-resource "MESSAGE"
         - script: secs=10; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
         - script: shipctl post_resource_state state-resource "MESSAGE" "build_"$BUILD_NUMBER
       - OUT: state-resource
+
+  - name: state-job-out
+    type: runSh
+    steps:
+      - IN: state-resource
+      - IN: job-with-state
+      - TASK:
+        - script: secs=10; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
 resources:
   - name: state-resource
