@@ -56,6 +56,8 @@ jobs:
         
   - name: strict-job-2
     type: runSh
+    triggerMode: parallel
+    dependencyMode: strict
     steps:
       - IN: resource-1
       - IN: resource-2
