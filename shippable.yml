@@ -52,6 +52,22 @@ jobs:
       - IN: job-with-state-2
       - TASK:
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+        
+  - name: c-job-1
+    type: runSh
+    steps:
+      - IN: c-res-1
+      - OUT: c-res-2      
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done    
+        
+  - name: d-job-1
+    type: runSh
+    steps:
+      - IN: d-res-1
+      - OUT: d-res-1      
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done            
 
 resources:
   - name: state-resource
@@ -59,3 +75,12 @@ resources:
     
   - name: state-resource-2
     type: state    
+
+  - name: c-res-1
+    type: state  
+
+  - name: c-res-2
+    type: state  
+    
+  - name: c-res-1
+    type: state      
