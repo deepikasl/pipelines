@@ -82,5 +82,5 @@ resources:
   - name: c-res-2
     type: state  
     
-  - name: c-res-1
+  - name: d-res-1
     type: state      
