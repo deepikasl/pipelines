@@ -69,9 +69,37 @@ jobs:
       - TASK:
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
+  - name: b_job-1
+    type: runSh
+    steps:  
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done 
+        
+  - name: b_job-2
+    type: runSh
+    steps:
+      - IN: b_job-1
+      - IN: b_state-1
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done         
+
+  - name: b_job-2
+    type: runSh
+    steps:
+      - IN: b_state-1
+      - IN: b_job-2     
+      - TASK:
+        - script: shipctl get_resource_version_key b_state-1 "MESSAGE"
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+        - script: shipctl post_resource_state b_state-1 "MESSAGE" "build_"$BUILD_NUMBER
+      - OUT: b_state-1
+
 resources:
   - name: state-1
     type: state
     
   - name: state-2
     type: state
+    
+  - name: b_state-1
+    type: state    
