@@ -20,4 +20,4 @@ resources:
       
   - name: cluster
     type: cluster
-    integration: "node-cluster"
+    integration: "nodes-list"
