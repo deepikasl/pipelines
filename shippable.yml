@@ -11,7 +11,7 @@ jobs:
       - IN: file-manifest
       - IN: cluster
       - TASK:
-        - script: sudo mkdir -p /home/ankul/Documents
+        - script: sudo mkdir -p /home/shippable/Documents
 
 resources:
   - name: file-resource
