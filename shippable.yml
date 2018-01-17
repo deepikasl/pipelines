@@ -3,12 +3,15 @@ jobs:
     type: manifest
     steps:
       - IN: file-resource
+      - IN: params
 
   - name: deploy
     type: deploy
     steps:
       - IN: file-manifest
       - IN: cluster
+      - TASK:
+        - script: mkdir -p /home/hope/Documents/pdf
 
 resources:
   - name: file-resource
@@ -21,3 +24,10 @@ resources:
   - name: cluster
     type: cluster
     integration: "nodes-list"
+    
+  - name: params
+    type: params
+    version:
+      params:
+        KEY1: "value1"
+        KEY2: "value2"      
