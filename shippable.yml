@@ -27,7 +27,8 @@ jobs:
     steps:
       - IN: bastian-access
       - TASK:
-        - script: printenv       
+        - script: printenv
+        - script: sudo ls /build/IN/bastian-access/
 
 
 resources:
