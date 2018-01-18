@@ -53,7 +53,7 @@ resources:
     pointer:
       bastionHost:
         address: 35.188.86.124
-        user: ubuntu
+        user: ankul
         keyIntegration: bastian-access
         nodeUser: random
     
