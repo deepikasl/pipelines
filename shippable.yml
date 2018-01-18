@@ -27,8 +27,8 @@ jobs:
     steps:
       - IN: bastian-access
       - TASK:
-        - script: printenv
-        - script: sudo ls /build/IN/bastian-access/
+        #- script: printenv
+        - script: sudo cat $BASTIANACCESS_PRIVATE_KEY_PATH
 
 
 resources:
