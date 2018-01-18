@@ -21,6 +21,13 @@ jobs:
       - IN: bastian-access
       - TASK:
         - script: sudo mkdir -p /home/random/documents
+        
+  - name: bastian-printenv
+    type: runSh
+    steps:
+      - IN: bastian-access
+      - TASK:
+        - script: printenv       
 
 
 resources:
