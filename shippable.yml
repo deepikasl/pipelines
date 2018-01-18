@@ -18,8 +18,9 @@ jobs:
     steps:
       - IN: file-manifest
       - IN: cluster-2
+      - IN: bastian-access
       - TASK:
-        - script: sudo mkdir -p /home/random/Documents
+        - script: sudo mkdir -p /home/random/documents
 
 
 resources:
