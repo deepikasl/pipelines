@@ -13,6 +13,15 @@ jobs:
       - TASK:
         - script: sudo mkdir -p /home/shippable/Documents
 
+  - name: bastian-deploy
+    type: deploy
+    steps:
+      - IN: file-manifest
+      - IN: cluster-2
+      - TASK:
+        - script: sudo mkdir -p /home/random/Documents
+
+
 resources:
   - name: file-resource
     type: file
@@ -24,6 +33,20 @@ resources:
   - name: cluster
     type: cluster
     integration: "nodes-list"
+
+  - name: bastian-access
+    type: integration
+    integration: "bastian-host-access"
+
+  - name: cluster-2
+    type: cluster
+    integration: "nodes-list-2"
+    pointer:
+      bastionHost:
+        address: 35.188.86.124
+        user: ubuntu
+        keyIntegration: bastian-access
+        nodeUser: random
     
   - name: params
     type: params
