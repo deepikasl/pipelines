@@ -10,6 +10,7 @@ jobs:
     steps:
       - IN: file-manifest
       - IN: cluster
+      - IN: gitRepo
       - TASK:
         - script: sudo mkdir -p /home/shippable/Documents
 
@@ -19,6 +20,7 @@ jobs:
       - IN: file-manifest
       - IN: cluster-2
       - IN: bastian-access
+      - IN: gitRepo
       - TASK:
         - script: sudo mkdir -p /home/random/documents
         
@@ -63,3 +65,10 @@ resources:
       params:
         KEY1: "value1"
         KEY2: "value2"      
+
+  - name: gitRepo
+    type: gitRepo
+    integration: "github-subint"
+    pointer:
+      sourceName: ankul-shippable/sample_node
+      branch: master
