@@ -13,7 +13,6 @@ jobs:
       - IN: sample_java-repo
       - TASK:
         - script: sudo mkdir -p /home/random/documents
-        - script: mkdir -p /home/random/documents-2
 
   - name: bastian-deploy
     type: deploy
@@ -24,7 +23,6 @@ jobs:
       - IN: sample_java-repo
       - TASK:
         - script: sudo mkdir -p /home/random/documents
-        - script: mkdir -p /home/random/documents-2
         
   - name: bastian-printenv
     type: runSh
