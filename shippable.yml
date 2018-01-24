@@ -136,8 +136,8 @@ resources:
       sourceName: ankul
       groupName: ankul
       bastionHost:
-        address: 54.202.160.104
-        user: ubuntu
+        address: 35.224.49.80
+        user: ankul
         keyIntegration: "kube-access"
 
   - name: GCLOUDKEY-cluster-2
