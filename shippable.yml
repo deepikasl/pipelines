@@ -38,7 +38,7 @@ jobs:
 
   - name: KUBE-deploy
     type: deploy
-    method: upgrade
+    method: blueGreen
     maxWaitTime: 120 # (seconds)
     steps:
       - IN: manifest-job
