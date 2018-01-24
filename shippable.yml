@@ -40,7 +40,7 @@ jobs:
     type: deploy
     method: replace
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 1 # (seconds)
+    maxWaitTime: 0 # (seconds)
     steps:
       - IN: manifest-job
       - IN: KUBE-cluster
