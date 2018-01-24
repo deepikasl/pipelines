@@ -119,8 +119,8 @@ resources:
     integration: "kube-subint"
     pointer:
       bastionHost:
-        address: 54.149.13.153
-        user: ubuntu
+        address: 35.224.49.80
+        user: ankul
         keyIntegration: "kube-access"
         
   - name: TRIPUB-cluster
