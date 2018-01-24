@@ -39,6 +39,7 @@ jobs:
   - name: KUBE-deploy
     type: deploy
     method: blueGreen
+    stabilityDuration: 60 # (seconds)
     maxWaitTime: 120 # (seconds)
     steps:
       - IN: manifest-job
