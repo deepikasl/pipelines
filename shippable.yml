@@ -38,7 +38,7 @@ jobs:
 
   - name: KUBE-deploy
     type: deploy
-    method: upgrade
+    method: scale
     stabilityDuration: 60 # (seconds)
     maxWaitTime: 47 # (seconds)
     steps:
@@ -77,7 +77,7 @@ resources:
   - name: scaler
     type: replicas
     version:
-      count: 1
+      count: 2
 
   - name: nginx-image
     type: image
