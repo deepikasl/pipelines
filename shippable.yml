@@ -38,9 +38,9 @@ jobs:
 
   - name: KUBE-deploy
     type: deploy
-    method: blueGreen
+    method: replae
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 230 # (seconds)
+    maxWaitTime: 47 # (seconds)
     steps:
       - IN: manifest-job
       - IN: KUBE-cluster
