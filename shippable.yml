@@ -38,7 +38,7 @@ jobs:
 
   - name: KUBE-deploy
     type: deploy
-    method: replace
+    method: upgrade
     stabilityDuration: 60 # (seconds)
     maxWaitTime: 47 # (seconds)
     steps:
