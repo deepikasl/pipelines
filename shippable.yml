@@ -3,75 +3,16 @@ jobs:
     type: manifest
     steps:
       - IN: nginx-image
-      
-  - name: DCL-deploy
-    type: deploy
-    method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: DCL-cluster
-      - IN: scaler
-      
-  - name: DDC-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: DDC-cluster
-      - IN: scaler  
-      
-  - name: ECS-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: ECS-cluster
-      - IN: scaler
-      
+
   - name: GKE-deploy
     type: deploy
-    #method: upgrade
+    method: blueGreen
+    stabilityDuration: 60 # (seconds)
+    maxWaitTime: 47 # (seconds)    
     steps:
       - IN: manifest-job
       - IN: GKE-cluster
       - IN: scaler
-
-  - name: KUBE-deploy
-    type: deploy
-    method: replace
-    stabilityDuration: 60 # (seconds)
-    maxWaitTime: 47 # (seconds)
-    steps:
-      - IN: manifest-job
-      - IN: KUBE-cluster
-      - IN: scaler
-      - IN: kube-access
-
-  - name: TRIPUB-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: TRIPUB-cluster
-      - IN: scaler
-
-  - name: AZURE-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: AZURE-cluster
-      - IN: scaler
-      - IN: kube-access  
-
-  - name: GCLOUDKEY-deploy
-    type: deploy
-    #method: upgrade
-    steps:
-      - IN: manifest-job
-      - IN: GCLOUDKEY-cluster-2
-      - IN: scaler
-      - IN: kube-access 
 
 resources:
   - name: scaler
@@ -86,70 +27,18 @@ resources:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
-      
-  - name: DCL-cluster
-    type: cluster
-    integration: "dcl-subint"
-    pointer:
-      sourceName: "dcl-cluster"
-      
-  - name: DDC-cluster
-    type: cluster
-    integration: "ddc-subint"
-    
-  - name: ECS-cluster
-    type: cluster
-    integration: "aws-subint"
-    pointer:
-      sourceName: "ecs-cluster"
-      region: "us-west-2"    
 
   - name: GKE-cluster
     type: cluster
     integration: "gke-subint"
     pointer:
       sourceName: "gke-cluster"
-      region: "us-central1-a"   
-      
-  - name: kube-access
-    type: integration
-    integration: "kube-bastian-host-access"
-
-  - name: KUBE-cluster
-    type: cluster
-    integration: "kube-subint"
-    pointer:
-      bastionHost:
-        address: 35.224.49.80
-        user: ankul
-        keyIntegration: "kube-access"
-        
-  - name: TRIPUB-cluster
-    type: cluster
-    integration: "joyent-subint"
-    pointer:
-      region: "us-east-1"        
-
-  - name: AZURE-cluster
-    type: cluster
-    integration: "azure-subint"
-    pointer:
-      sourceName: ankul
-      groupName: ankul
-      bastionHost:
-        address: 35.224.49.80
-        user: ankul
-        keyIntegration: "kube-access"
-
-  - name: GCLOUDKEY-cluster-2
-    type: cluster
-    integration: "gke-subint"
-    pointer:
-      sourceName: "gke-cluster-2"
       region: "us-central1-a"
-      #namespace: "random_name_space"
-      groupName: "test_group"
-      #bastionHost:
-        #address: 34.211.50.143
-        #user: ubuntu
-        #keyIntegration: "kube-access-2"
+      bastionHost:
+        address: 35.226.229.205
+        user: ankul
+        keyIntegration: "bastion-access"      
+      
+  - name: bastion-access
+    type: integration
+    integration: "bastion-access-keys"
