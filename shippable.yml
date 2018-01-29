@@ -8,7 +8,7 @@ jobs:
     type: deploy
     method: blueGreen
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 47 # (seconds)    
+    maxWaitTime: 4 # (seconds)    
     steps:
       - IN: manifest-job
       - IN: GKE-cluster
