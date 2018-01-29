@@ -8,7 +8,7 @@ jobs:
     type: deploy
     method: upgrade
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 4 # (seconds)    
+    maxWaitTime: 47 # (seconds)    
     steps:
       - IN: manifest-job
       - IN: GKE-cluster
