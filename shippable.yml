@@ -6,7 +6,7 @@ jobs:
 
   - name: GKE-deploy
     type: deploy
-    method: blueGreen
+    method: upgrade
     stabilityDuration: 60 # (seconds)
     maxWaitTime: 4 # (seconds)    
     steps:
