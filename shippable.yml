@@ -8,7 +8,7 @@ jobs:
     type: deploy
     method: upgrade
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 47 # (seconds)    
+    maxWaitTime: 1 # (seconds)    
     steps:
       - IN: manifest-job
       - IN: DDC-cluster
