@@ -4,14 +4,14 @@ jobs:
     steps:
       - IN: nginx-image
 
-  - name: GKE-deploy
+  - name: DDC-deploy
     type: deploy
-    method: upgrade
+    method: blueGreen
     stabilityDuration: 60 # (seconds)
     maxWaitTime: 47 # (seconds)    
     steps:
       - IN: manifest-job
-      - IN: GKE-cluster
+      - IN: DDC-cluster
       - IN: scaler
 
 resources:
@@ -28,16 +28,16 @@ resources:
     seed:
       versionName: prod.10
 
-  - name: GKE-cluster
+  - name: DDC-cluster
     type: cluster
-    integration: "gke-subint"
-    pointer:
-      sourceName: "gke-cluster"
-      region: "us-central1-a"
-      bastionHost:
-        address: 35.226.229.205
-        user: ankul
-        keyIntegration: "bastion-access"      
+    integration: "ddc-subint"
+    #versionTemplate:
+      #sourceName: "gke-cluster"
+      #region: "us-central1-a"
+      #bastionHost:
+        #address: 35.226.229.205
+        #user: ankul
+        #keyIntegration: "bastion-access"      
       
   - name: bastion-access
     type: integration
