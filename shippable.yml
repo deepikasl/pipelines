@@ -6,9 +6,9 @@ jobs:
 
   - name: DDC-deploy
     type: deploy
-    method: upgrade
+    method: blueGreen
     stabilityDuration: 60 # (seconds)
-    maxWaitTime: 1 # (seconds)    
+    maxWaitTime: 19 # (seconds)    
     steps:
       - IN: manifest-job
       - IN: DDC-cluster
