@@ -47,8 +47,8 @@ jobs:
       - IN: job-B      
       - TASK:
         - script: secs=5; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-    on_success:
-      - NOTIFY: slack    
+    #on_success:
+      #- NOTIFY: slack    
 
 resources:
   - name: img-1
@@ -67,9 +67,9 @@ resources:
     seed:
       versionName: prod.11
       
-  - name: slack
-    type: notification
-    integration: "slack-subint"
-    pointer:
-      recipients:
-        - "#test-5148"  
+  #- name: slack
+    #type: notification
+    #integration: "slack-subint"
+    #pointer:
+      #recipients:
+        #- "#test-5148"  
