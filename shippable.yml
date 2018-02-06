@@ -56,9 +56,9 @@ resources:
     seed:
       versionName: prod.10
 
- - name: HiptestDockerHub
-   type: integration
-   integration: "docker-subint"
+  - name: HiptestDockerHub
+    type: integration
+    integration: "docker-subint"
 
   - name: notify-hiptest-dev-team
     type: notification
