@@ -55,10 +55,21 @@ resources:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
-      
+
+ - name: HiptestDockerHub
+   type: integration
+   integration: "docker-subint"
+
   - name: notify-hiptest-dev-team
     type: notification
     integration: "slack-subint"
     pointer:
       recipients:
-        - "#test-5148"  
+        - "#test-5148"
+        
+  - name: hiptest-pipelines-repo
+    type: gitRepo
+    integration: "github-subint"
+    pointer:
+      sourceName: ankul-shippable/hiptest
+      branch: master
