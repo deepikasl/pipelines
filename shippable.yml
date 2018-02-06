@@ -3,7 +3,7 @@ build:
     - echo "true"
 
 jobs:
-  - name: hiptest_runCI
+  - name: sample_node_runCI
     type: runCI
     steps:
       - OUT: hiptest-img
