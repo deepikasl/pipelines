@@ -4,21 +4,25 @@ jobs:
     steps:
       - IN: nginx-image
 
-  - name: DDC-deploy
+  - name: ECS-deploy
     type: deploy
-    method: blueGreen
-    stabilityDuration: 60 # (seconds)
-    maxWaitTime: 1 # (seconds)    
+    method: blueGreen  
     steps:
       - IN: manifest-job
-      - IN: DDC-cluster
+      - IN: ECS-cluster
       - IN: scaler
+      - IN: dockerOptions
+      - IN: classicLB
+        applyTo:
+          - manifest: manifest-job
+            image: nginx-image
+            port: 80
 
 resources:
   - name: scaler
     type: replicas
     version:
-      count: 1
+      count: 2
 
   - name: nginx-image
     type: image
@@ -33,12 +37,25 @@ resources:
     integration: "ecs-subint"
     versionTemplate:
       sourceName: "gke-cluster"
-      region: "us-central1-a"
+      region: "us-central1-c"
       bastionHost:
-        address: 35.226.229.205
+        address: 35.188.163.248
         user: ankul
         keyIntegration: "bastion-access"      
       
   - name: bastion-access
     type: integration
     integration: "bastion-access-keys"
+    
+  - name: classicLB
+    type: loadBalancer
+    versionTemplate:
+      sourceName: "classiclb"
+      method: classic
+      role: "lb_role"
+      
+  - name: dockerOptions
+    type: dockerOptions
+    versionTemplate:
+      portMappings:
+        - "80:80/tcp" #hostPort:containerPort/protocol (udp|tcp)      
