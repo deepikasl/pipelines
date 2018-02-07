@@ -6,17 +6,17 @@ jobs:
 
   - name: ECS-deploy
     type: deploy
-    method: upgrade  
+    method: blueGreen  
     steps:
       - IN: manifest-job
       - IN: ECS-cluster
       - IN: scaler
       - IN: dockerOptions
-      - IN: classicLB
-        applyTo:
-          - manifest: manifest-job
-            image: nginx-image
-            port: 80
+      #- IN: classicLB
+        #applyTo:
+          #- manifest: manifest-job
+            #image: nginx-image
+            #port: 80
 
 resources:
   - name: scaler
