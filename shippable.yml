@@ -28,9 +28,9 @@ resources:
     type: image
     integration: "docker-subint"
     pointer:
-      sourceName: "ankul/nginx"
+      sourceName: "ankul/app"
     seed:
-      versionName: prod.10
+      versionName: latest
 
   - name: ECS-cluster
     type: cluster
