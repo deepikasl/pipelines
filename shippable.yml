@@ -28,16 +28,16 @@ resources:
     seed:
       versionName: prod.10
 
-  - name: DDC-cluster
+  - name: ECS-cluster
     type: cluster
-    integration: "ddc-subint"
-    #versionTemplate:
-      #sourceName: "gke-cluster"
-      #region: "us-central1-a"
-      #bastionHost:
-        #address: 35.226.229.205
-        #user: ankul
-        #keyIntegration: "bastion-access"      
+    integration: "ecs-subint"
+    versionTemplate:
+      sourceName: "gke-cluster"
+      region: "us-central1-a"
+      bastionHost:
+        address: 35.226.229.205
+        user: ankul
+        keyIntegration: "bastion-access"      
       
   - name: bastion-access
     type: integration
