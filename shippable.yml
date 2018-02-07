@@ -36,12 +36,8 @@ resources:
     type: cluster
     integration: "ecs-subint"
     versionTemplate:
-      sourceName: "gke-cluster"
-      region: "us-central1-c"
-      bastionHost:
-        address: 35.188.163.248
-        user: ankul
-        keyIntegration: "bastion-access"      
+      sourceName: "ecs-cluster"
+      region: "us-west-2"
       
   - name: bastion-access
     type: integration
