@@ -50,6 +50,8 @@ jobs:
     on_success:
       - NOTIFY: notify-hiptest-dev-team          
 
+
+
 resources:
   - name: hiptest-img
     type: image
@@ -74,5 +76,40 @@ resources:
     type: gitRepo
     integration: "github-subint"
     pointer:
+      sourceName: ankul-shippable/pipelines
+      branch: master
+
+  - name: hiptest-final-img
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.11
+
+  - name: hiptest-frontend-img
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.12
+      
+  - name: hiptest-backend-img
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.9
+      
+  - name: hiptest-repo
+    type: gitRepo
+    integration: "github-subint"
+    pointer:
       sourceName: ankul-shippable/hiptest
       branch: master
+
+  - name: Github
+    type: integration
+    integration: "github-subint"
