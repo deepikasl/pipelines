@@ -28,7 +28,7 @@ jobs:
       - TASK:
         - script: secs=30; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
-  - name:3a_runCI
+  - name: 3a_runCI
     type: runCI
     dependencyMode: strict    
     steps:
