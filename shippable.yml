@@ -46,8 +46,8 @@ resources:
   - name: classicLB
     type: loadBalancer
     versionTemplate:
-      sourceName: classiclb
-      method: classic
+      sourceName: arn:aws:elasticloadbalancing:region:account-id:targetgroup-aa/target-group-name/target-group-id
+      method: application
       role: "lb_role"
       
   - name: dockerOptions
