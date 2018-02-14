@@ -46,7 +46,7 @@ resources:
   - name: classicLB
     type: loadBalancer
     versionTemplate:
-      sourceName: arn:aws:elasticloadbalancing:region:account-id:targetgroup/target-group-name/target-group-id
+      sourceName: arn:aws:elasticloadbalancing:region:account-id:targetgroup-aa/target-group-name/target-group-id
       method: application
       role: "lb_role"
       
