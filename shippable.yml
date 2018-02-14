@@ -42,7 +42,7 @@ jobs:
       - IN: HiptestDockerHub
         switch: off      
       - TASK:
-        - script: secs=5; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done   
+        - script: secs=500; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done   
 
   #- name: h4h-tests-job
   #  type: runSh
