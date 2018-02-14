@@ -54,4 +54,4 @@ resources:
     type: dockerOptions
     versionTemplate:
       portMappings:
-        #- "80:80/tcp" #hostPort:containerPort/protocol (udp|tcp)      
+        - "80:80/tcp" #hostPort:containerPort/protocol (udp|tcp)      
