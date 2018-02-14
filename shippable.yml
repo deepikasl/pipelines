@@ -16,7 +16,7 @@ jobs:
         applyTo:
           - manifest: manifest-job
             image: nginx-image
-            #port: 80
+            port: 80
 
 resources:
   - name: scaler
@@ -54,4 +54,4 @@ resources:
     type: dockerOptions
     versionTemplate:
       portMappings:
-        - "80:80/tcp" #hostPort:containerPort/protocol (udp|tcp)      
+        #- "80:80/tcp" #hostPort:containerPort/protocol (udp|tcp)      
