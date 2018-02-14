@@ -5,8 +5,8 @@ jobs:
       - IN: nginx-image
 
   - name: ECS-deploy
-    type: blueGreen
-    method: upgrade  
+    type: deploy
+    method: blueGreen  
     steps:
       - IN: manifest-job
       - IN: ECS-cluster
