@@ -6,7 +6,7 @@ jobs:
 
   - name: ECS-deploy
     type: deploy
-    method: blueGreen  
+    method: upgrade  
     steps:
       - IN: manifest-job
       - IN: ECS-cluster
