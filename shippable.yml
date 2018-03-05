@@ -38,10 +38,6 @@ resources:
     versionTemplate:
       sourceName: "ecs-cluster"
       region: "us-west-2"
-      
-  - name: bastion-access
-    type: integration
-    integration: "bastion-access-keys"
     
   - name: classicLB
     type: loadBalancer
