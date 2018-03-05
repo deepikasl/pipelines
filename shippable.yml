@@ -28,7 +28,7 @@ resources:
     type: image
     integration: "docker-subint"
     pointer:
-      sourceName: "ankul/app"
+      sourceName: "ankul/app2"
     seed:
       versionName: latest
 
