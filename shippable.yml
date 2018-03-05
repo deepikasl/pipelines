@@ -2,7 +2,7 @@ jobs:
   - name: manifest-job
     type: manifest
     steps:
-      - IN: nginx-image
+      - IN: nginx-image-2
 
   - name: ECS-deploy
     type: deploy
@@ -15,7 +15,7 @@ jobs:
       - IN: classicLB
         applyTo:
           - manifest: manifest-job
-            image: nginx-image
+            image: nginx-image-2
             port: 80
 
 resources:
@@ -28,9 +28,17 @@ resources:
     type: image
     integration: "docker-subint"
     pointer:
-      sourceName: "ankul/app2"
+      sourceName: "ankul/app"
     seed:
       versionName: latest
+      
+  - name: nginx-image-2
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/app2"
+    seed:
+      versionName: latest      
 
   - name: ECS-cluster
     type: cluster
