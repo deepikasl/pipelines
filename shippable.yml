@@ -2,7 +2,7 @@ jobs:
   - name: manifest-job
     type: manifest
     steps:
-      - IN: nginx-image-2
+      - IN: nginx-image
 
   - name: ECS-deploy
     type: deploy
@@ -15,7 +15,7 @@ jobs:
       - IN: classicLB
         applyTo:
           - manifest: manifest-job
-            image: nginx-image-2
+            image: nginx-image
             port: 80
 
 resources:
