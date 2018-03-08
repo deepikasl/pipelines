@@ -37,7 +37,7 @@ jobs:
     type: runSh
     dependencyMode: strict
     runtime:
-      timeoutMinutes: dsfsdfsd
+      timeoutMinutes: -100
     steps:
       - IN: ember-tests-job
       - IN: rspec-tests-job
