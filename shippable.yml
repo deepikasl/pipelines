@@ -9,7 +9,9 @@ jobs:
       - OUT: hiptest-img
 
   - name: ember-tests-job
-    type: runSh   
+    type: runSh
+    runtime:
+      timeoutMinutes: 25    
     steps:
       - IN: hiptest-img
       - IN: hiptest-pipelines-repo
