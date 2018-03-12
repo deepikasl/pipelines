@@ -5,3 +5,11 @@ build:
 resources:
   - name: external_ci_test
     type: externalCIServer
+
+  - name: image_test_nginx
+    type: image
+    integration: "github-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.10
