@@ -14,7 +14,7 @@ jobs:
     type: runSh   
     steps:
       #- IN: externalCI-1b
-        switch: off
+      #  switch: off
       - TASK:
         - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
         
