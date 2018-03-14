@@ -6,14 +6,14 @@ jobs:
   - name: executable
     type: runSh   
     steps:
-      - IN: externalCI-1b
+      #- IN: externalCI-1b
       - TASK:
         - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
         
   - name: switched-off
     type: runSh   
     steps:
-      - IN: externalCI-1b
+      #- IN: externalCI-1b
         switch: off
       - TASK:
         - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
@@ -21,14 +21,14 @@ jobs:
   - name: paused
     type: runSh   
     steps:
-      - IN: externalCI-1b
+      #- IN: externalCI-1b
       - TASK:
         - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done        
 
-  - name: externalCI-1b
-    type: externalCI   
-    steps:
-      - IN: image_test_nginx
+  #- name: externalCI-1b
+  #  type: externalCI   
+  #  steps:
+  #    - IN: image_test_nginx
 
 resources:
   - name: external_ci_test
