@@ -38,8 +38,6 @@ jobs:
   - name: feature-tests-job
     type: runSh
     dependencyMode: strict
-    runtime:
-      timeoutMinutes: 1000000
     steps:
       - IN: ember-tests-job
       - IN: rspec-tests-job
