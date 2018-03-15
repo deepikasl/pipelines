@@ -3,6 +3,12 @@ build:
     - echo "true"
 
 jobs:
+  - name: sample_java_runCI
+    type: runCI   
+    steps:
+      - IN: externalCI-1c
+      - IN: manifest-job
+
   - name: executable
     type: runSh   
     steps:
