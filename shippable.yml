@@ -38,6 +38,8 @@ jobs:
   - name: feature-tests-job
     type: runSh
     dependencyMode: strict
+    runtime:
+      nodePool: custom_node_pool
     steps:
       - IN: ember-tests-job
       - IN: rspec-tests-job
