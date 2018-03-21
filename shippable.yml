@@ -11,7 +11,7 @@ jobs:
 
   - name: ember-tests-job
     type: runSh
-    priority: 999
+    priority: random
     runtime:
       timeoutMinutes: 25    
     steps:
