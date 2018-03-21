@@ -5,13 +5,13 @@ build:
 jobs:
   - name: sample_node_runCI
     type: runCI
-    priority: -10
+    priority: -string
     steps:
       - OUT: hiptest-img
 
   - name: ember-tests-job
     type: runSh
-    priority: 10001
+    priority: string
     runtime:
       timeoutMinutes: 25    
     steps:
