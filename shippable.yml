@@ -50,7 +50,9 @@ jobs:
   - name: runSh3
     type: runSh
     dependencyMode: strict
-    priority: 9991    
+    priority: 9991
+    runtime:
+      timeoutMinutes: 5
     steps:
       - IN: runSh2
       - IN: hiptest-pipelines-repo
