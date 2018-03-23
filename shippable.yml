@@ -53,7 +53,7 @@ jobs:
     dependencyMode: strict
     priority: 9991    
     steps:
-      - IN: runSh3
+      - IN: runSh2
       - IN: hiptest-pipelines-repo
         switch: off      
       - IN: HiptestDockerHub
