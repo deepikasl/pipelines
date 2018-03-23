@@ -5,12 +5,28 @@ build:
 jobs:
   - name: sample_node_runCI
     type: runCI
+    depdendencyMode: strict
+    priority: 10
     steps:
       - OUT: hiptest-img
+      
+  - name: sample_c_runCI
+    type: runCI
+    depdendencyMode: strict
+    steps:
+      - IN: sample_node_runCI
+      
+  - name: sample_java_runCI
+    type: runCI
+    depdendencyMode: strict
+    priority: 9990
+    steps:
+      - IN: sample_c_runCI
 
-  - name: ember-tests-job
+  - name: runSh1
     type: runSh
     dependencyMode: strict
+    priority: 11
     steps:
       - IN: hiptest-img
       - IN: hiptest-pipelines-repo
@@ -20,11 +36,11 @@ jobs:
       - TASK:
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
-  - name: rspec-tests-job
+  - name: runSh2
     type: runSh
     dependencyMode: strict    
     steps:
-      - IN: hiptest-img
+      - IN: runSh1
       - IN: hiptest-pipelines-repo
         switch: off      
       - IN: HiptestDockerHub
@@ -32,26 +48,24 @@ jobs:
       - TASK:     
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done 
 
-  - name: feature-tests-job
+  - name: runSh3
     type: runSh
-    dependencyMode: strict    
+    dependencyMode: strict
+    priority: 9991    
     steps:
-      - IN: ember-tests-job
-      - IN: rspec-tests-job
+      - IN: runSh3
       - IN: hiptest-pipelines-repo
         switch: off      
       - IN: HiptestDockerHub
         switch: off      
       - TASK:     
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done     
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done 
         
-  - name: final-tests-job
-    type: runSh
-    dependencyMode: strict    
+  - name: stall
+    type: runSh   
     steps:
-      - IN: feature-tests-job    
       - TASK:     
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done             
+        - script: secs=300; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done             
 
 resources:
   - name: hiptest-img
