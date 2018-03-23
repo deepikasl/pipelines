@@ -28,7 +28,6 @@ jobs:
     dependencyMode: strict
     priority: 11
     steps:
-      - IN: hiptest-img
       - IN: hiptest-pipelines-repo
         switch: off
       - IN: HiptestDockerHub
