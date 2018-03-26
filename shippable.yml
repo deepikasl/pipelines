@@ -13,6 +13,7 @@ jobs:
 
   - name: job-B
     type: runSh
+    dependencyMode: strict
     steps:
       - IN: img-1
       - IN: img-2
