@@ -6,7 +6,7 @@ jobs:
   - name: sample_node_runCI
     type: runCI
     depdendencyMode: strict
-    priority: 10
+    priority: 0
     steps:
       - OUT: hiptest-img
       
@@ -19,14 +19,14 @@ jobs:
   - name: sample_java_runCI
     type: runCI
     depdendencyMode: strict
-    priority: 9990
+    priority: 10000
     steps:
       - IN: sample_c_runCI
 
   - name: runSh1
     type: runSh
     dependencyMode: strict
-    priority: 0
+    priority: 10
     steps:
       - IN: hiptest-pipelines-repo
         switch: off
@@ -50,7 +50,7 @@ jobs:
   - name: runSh3
     type: runSh
     dependencyMode: strict
-    priority: 10000
+    priority: 9990
     steps:
       - IN: runSh2
       - IN: hiptest-pipelines-repo
