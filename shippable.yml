@@ -1,6 +1,6 @@
 build:
   ci:
-    - echo "true"
+    - echo "true2"
 
 jobs:
   - name: job-1
