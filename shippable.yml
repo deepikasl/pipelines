@@ -12,6 +12,7 @@ jobs:
       - IN: sample_node_runCI
         triggerOnFailure: true
         triggerOnSuccess: true
+      - IN: externalCI-1a
  
   - name: runSh1
     type: runSh
