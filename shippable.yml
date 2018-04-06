@@ -16,5 +16,23 @@ jobs:
         triggerOnFailure: false  
         triggerOnSuccess: false
       - IN: sample_scala_runCI
+      - IN: runSh-1
+        triggerOnFailure: true
       - TASK:
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+        
+  - name: runSh-1
+    type: runSh
+    steps:
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+        
+
+resources:
+  - name: image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.10        
