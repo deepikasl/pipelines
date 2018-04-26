@@ -60,6 +60,5 @@ resources:
     type: notification
     integration: "slack-subint"
     versionTemplate:
-      method: email
       recipients:
         - "#test-5148"     
