@@ -3,19 +3,60 @@ build:
     - echo "true2"
 
 jobs:
-  - name: job-1
+  - name: manifest-1
+    type: manifest
+    steps:
+      - IN: nginx-image
+      
+  - name: manifest-2
+    type: manifest
+    steps:
+
+  - name: old_syntax
     type: runSh
-    triggerMode: parallel
-    dependencyMode: strict
     steps:
       - TASK:
-        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done   
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+    on_success:
+      - NOTIFY: email_notify
+      - NOTIFY: slack_nofify
+      - script: echo "old succeeded"
+
+  - name: new_syntax
+    type: runSh
+    steps:
+      - TASK:
+        - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+    on_success:
+      script:
+        - echo "new succeeded"
+      NOTIFY:
+        - name: email_notify
+          sendFailingSnippet: true
+        - name: slack_nofify       
+
+                
 
 resources:
-  - name: resource-1
+  - name: nginx-image
     type: image
     integration: "docker-subint"
     pointer:
       sourceName: "ankul/nginx"
     seed:
       versionName: prod.10
+      
+  - name: email_notify
+    type: notification
+    versionTemplate:
+      method: email
+      recipients:
+        - "ankul@shippable.com"
+        
+  - name: slack_notify
+    type: notification
+    integration: "slack-subint"
+    versionTemplate:
+      method: email
+      recipients:
+        - "#test-5148"     
