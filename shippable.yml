@@ -11,6 +11,7 @@ jobs:
   - name: manifest-2
     type: manifest
     steps:
+      - IN: nginx-image
 
   - name: old_syntax
     type: runSh
