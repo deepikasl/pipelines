@@ -34,7 +34,36 @@ jobs:
       - NOTIFY: email_notify
         someotherflag: true        
       - NOTIFY: slack_notify
-      - script: echo "old succeeded"
+      - script: echo "old_syntax on_success"
+    on_failure:
+      - NOTIFY: email_notify
+        sendFailingSnippet: true
+      - NOTIFY: email_notify
+        someotherflag: true        
+      - NOTIFY: slack_notify
+      - script: echo "old_syntax on_failure"
+    on_cancel:
+      - NOTIFY: email_notify
+        sendFailingSnippet: true
+      - NOTIFY: email_notify
+        someotherflag: true        
+      - NOTIFY: slack_notify
+      - script: echo "old_syntax on_cancel"
+    on_start:
+      - NOTIFY: email_notify
+        sendFailingSnippet: true
+      - NOTIFY: email_notify
+        someotherflag: true        
+      - NOTIFY: slack_notify
+      - script: echo "old_syntax on_start"
+    always:
+      - NOTIFY: email_notify
+        sendFailingSnippet: true
+      - NOTIFY: email_notify
+        someotherflag: true        
+      - NOTIFY: slack_notify
+      - script: echo "old_syntax always"      
+      
 
   - name: new_syntax
     type: runSh
@@ -44,14 +73,49 @@ jobs:
         - script: secs=1; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
     on_success:
       script:
-        - echo "new succeeded"
+        - echo "new_syntax on_success"
       NOTIFY:
         - name: email_notify
-          sendFailingSnippet: false
+          sendFailingSnippet: true
         - name: email_notify
           someotherflag: false            
         - name: slack_notify       
-
+    on_failure:
+      script:
+        - echo "new_syntax on_failure"
+      NOTIFY:
+        - name: email_notify
+          sendFailingSnippet: true
+        - name: email_notify
+          someotherflag: false            
+        - name: slack_notify       
+    on_cancel:
+      script:
+        - echo "new_syntax on_cancel"
+      NOTIFY:
+        - name: email_notify
+          sendFailingSnippet: true
+        - name: email_notify
+          someotherflag: false            
+        - name: slack_notify       
+      on_start:
+      script:
+        - echo "new_syntax on_start"
+      NOTIFY:
+        - name: email_notify
+          sendFailingSnippet: true
+        - name: email_notify
+          someotherflag: false            
+        - name: slack_notify       
+     always:
+      script:
+        - echo "new_syntax always"
+      NOTIFY:
+        - name: email_notify
+          sendFailingSnippet: true
+        - name: email_notify
+          someotherflag: false            
+        - name: slack_notify              
                 
 
 resources:
