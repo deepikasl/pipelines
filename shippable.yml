@@ -47,7 +47,7 @@ jobs:
         - echo "new succeeded"
       NOTIFY:
         - name: email_notify
-          sendFailingSnippet: true
+          sendFailingSnippet: false
         - name: email_notify
           someotherflag: false            
         - name: slack_notify       
