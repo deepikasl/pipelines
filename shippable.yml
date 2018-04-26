@@ -39,7 +39,7 @@ jobs:
       NOTIFY:
         - name: email_notify
           sendFailingSnippet: true
-        - NOTIFY: email_notify
+        - name: email_notify
           someotherflag: true            
         - name: slack_notify       
 
