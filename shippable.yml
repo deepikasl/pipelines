@@ -98,7 +98,7 @@ jobs:
         - name: email_notify
           someotherflag: false            
         - name: slack_notify       
-      on_start:
+    on_start:
       script:
         - echo "new_syntax on_start"
       NOTIFY:
@@ -107,7 +107,7 @@ jobs:
         - name: email_notify
           someotherflag: false            
         - name: slack_notify       
-     always:
+    always:
       script:
         - echo "new_syntax always"
       NOTIFY:
