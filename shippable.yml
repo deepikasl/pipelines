@@ -38,7 +38,6 @@ jobs:
       - script: echo "old_syntax on_success"
     on_failure:
       - NOTIFY: email_notify
-        sendFailingSnippet: true
       - NOTIFY: email_notify
         someotherflag: true        
       - NOTIFY: slack_notify
@@ -87,7 +86,6 @@ jobs:
         - echo "new_syntax on_failure"
       NOTIFY:
         - name: email_notify
-          sendFailingSnippet: true
         - name: email_notify
           someotherflag: false            
         - name: slack_notify       
