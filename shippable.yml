@@ -3,13 +3,7 @@ build:
     - echo "true"
 
 jobs:
-  - name: sample_java_runCI
-    type: runCI   
-    steps:
-      - IN: externalCI-1c
-      - IN: manifest-job
-
-  - name: executable
+  - name: runSh-job
     type: runSh   
     steps:
       - IN: externalCI-1c
@@ -18,41 +12,12 @@ jobs:
         - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
         - script: sudo apt-get install tree
         - script: tree
-        - script: cat IN/externalCI-1c/version.json      
-        
-  - name: switched-off
-    type: runSh   
-    steps:
-      - IN: externalCI-1c
-        switch: off
-      - TASK:
-        - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
-        
-  - name: paused
-    type: runSh   
-    steps:
-      - IN: externalCI-1c
-      - TASK:
-        - script: secs=6; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done        
+        - script: cat IN/externalCI-1c/version.json           
 
   - name: externalCI-1c
     type: externalCI   
-    steps:
-      - IN: image_test_nginx
    
-  - name: manifest-job
-    type: manifest   
-    steps:
-      - IN: image_test_nginx
 
 resources:
   - name: plug_jenkin_jobs
     type: externalCIServer
-
-  - name: image_test_nginx
-    type: image
-    integration: "github-subint"
-    pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
